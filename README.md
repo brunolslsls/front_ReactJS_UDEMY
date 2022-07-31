@@ -1,6 +1,7 @@
 # styled-components
 ## `ThemeProvider`
-é utlizado para criar temas artisticas para nossos componenetes
+é utlizado para criar temas artisticas para nossos componenetes 
+- LINK https://mui.com/pt/material-ui/customization/default-theme/
 - palette: define a paleta de cores
 A baixo exemplo para aplica no mesmo projeto 
 ```js
