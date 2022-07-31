@@ -1,5 +1,35 @@
 # styled-components
+## `ThemeProvider`
+é utlizado para criar temas artisticas para nossos componenetes
+- palette: define a paleta de cores
+A baixo exemplo para aplica no mesmo projeto 
+```js
+import * as React from 'react';
+import { Button } from '@material-ui/core';
+import { ThemeProvider, createTheme } from '@material-ui/core';
 
+function App() {
+  const tema = createTheme({
+    palette: {
+      primary:{ // define uma cor primaria 
+        main: '#f44336',
+      },
+      secondary:{ // defina uma cor secundaria
+        main: '#00796b',
+      }
+    },
+  });
+
+  return (
+    <ThemeProvider theme={tema}>
+      {/**variant = ele é o tipo de botão  */}
+      <Button variant='contained' color='secondary'> Olá Mundo</Button>
+    </ThemeProvider>
+  );
+}
+export default App;
+
+```
 ## `ThemeProvider`
 Podemos importa um estilo para todo os componentes que estiver dentro do *ThemeProvider*
 
