@@ -1,8 +1,12 @@
-# styled-components
+# material-ui/core
+
 ## `ThemeProvider`
 é utlizado para criar temas artisticas para nossos componenetes 
 - LINK https://mui.com/pt/material-ui/customization/default-theme/
-- palette: define a paleta de cores
+- Precisamos ter o importe e a TAG ThemeProvider
+- Depois é só colocar os componentes dentro dele que ira herda esse estilo
+- Podemos definir o estilo para todos componentes atraves do atributo *theme* no arquivo index.js
+  - palette: define a paleta de cores
 A baixo exemplo para aplica no mesmo projeto 
 ```js
 import * as React from 'react';
@@ -31,12 +35,9 @@ function App() {
 export default App;
 
 ```
-## `ThemeProvider`
-Podemos importa um estilo para todo os componentes que estiver dentro do *ThemeProvider*
+## `ThemeProvider` 
+Podemos trabalha em arquivos separados como exemplo mostra abaixo
 
-- Precisamos ter o importe e a TAG ThemeProvider
-- Depois é só colocar os componentes dentro dele que ira herda esse estilo
-- Podemos definir o estilo para todos componentes atraves do atributo *theme* no arquivo index.js
 ```jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -82,3 +83,31 @@ export const GlobalStyles = createGlobalStyle`
 `;
 ```
 
+## `makeStyles`
+é responsavel de rodar o Css das nossas paginas 
+- exemplo em roda no mesmo projeto
+```jsx
+import * as React from 'react';
+import { makeStyles } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core';
+
+const estilo = makeStyles({
+  root: {
+    background: '#6a1b9a',
+    height: '100vh'
+  }
+});
+
+
+function App() {
+
+  const tela = estilo();
+  return (
+    <ThemeProvider>
+      <div className={tela.root}></div>
+    </ThemeProvider>
+  );
+}
+export default App;
+
+```
