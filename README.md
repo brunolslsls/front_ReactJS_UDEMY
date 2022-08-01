@@ -229,3 +229,65 @@ function Home() {
 }
 export default Home;
 ```
+# Exemplo com spacing: 
+- arquivo app.js
+```js
+import * as React from 'react';
+import { makeStyles } from '@material-ui/core';
+import { ThemeProvider,createTheme } from '@material-ui/core';
+import Home from './Home';
+
+const estilo = makeStyles({
+  root: {
+    // background: '#6a1b9a',
+    // height: '100vh'
+  }
+});
+
+
+function App() {
+  const tema = createTheme({
+    spacing: 4,
+    palette: {
+      primary:{ // define uma cor primaria 
+        main: '#f44336',
+      },
+      secondary:{ // defina uma cor secundaria
+        main: '#00796b',
+      }
+    },
+  });
+
+  const tela = estilo();
+  return (
+    <ThemeProvider theme={tema}>
+      <Home/>
+    </ThemeProvider>
+  );
+}
+export default App;
+
+```
+- arquivo Home.js
+```js
+import * as React from 'react';
+import { makeStyles } from '@material-ui/core';
+
+const estilo = makeStyles((tema) => ({
+    root: {
+      background:tema.palette.primary.main, // define a cor
+      padding: tema.spacing(2), // define a margem interna
+      height: '100vh',
+
+    }
+  }));
+
+function Home() {
+    const tela = estilo();
+    return (
+        <div className={tela.root}>dsajidbsapdsb</div>
+    );
+}
+export default Home;
+
+```
