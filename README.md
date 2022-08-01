@@ -111,3 +111,59 @@ function App() {
 export default App;
 
 ```
+## `makeStyles`
+exemplo em roda em arquivos separados
+- arquivo App.js
+```js
+import * as React from 'react';
+import { ThemeProvider } from '@material-ui/core';
+import Home from './Home';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Home/>
+    </ThemeProvider>
+  );
+}
+export default App;
+
+```
+- Home.js
+```js
+import * as React from 'react';
+import { makeStyles } from '@material-ui/core';
+
+const estilo = makeStyles({
+    root: {
+        background: 'blue',
+        height: '100vh'
+    }
+});
+
+function Home() {
+    const tela = estilo();
+    return (
+        <div className={tela.root}></div>
+    );
+}
+export default Home;
+
+```
+- Index.js
+```js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+import {CssBaseline} from '@material-ui/core';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <CssBaseline/>
+    <App />
+  </React.StrictMode>
+);
+
+```
