@@ -10,6 +10,7 @@
 ## `createTheme`
   ele perminte criar um tema global para todos os arquivos
   - palette: define a paleta de cores
+  - spacing: define quantidade de marge do elemento (padrão é 8px)
 A baixo exemplo para aplica no mesmo projeto 
 ```js
 import * as React from 'react';
