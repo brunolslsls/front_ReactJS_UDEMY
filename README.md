@@ -3,9 +3,12 @@
 ## `ThemeProvider`
 é utlizado para criar temas artisticas para nossos componenetes 
 - LINK https://mui.com/pt/material-ui/customization/default-theme/
-- Precisamos ter o importe e a TAG ThemeProvider
+- Precisamos ter o importe e a TAG ThemeProvide
 - Depois é só colocar os componentes dentro dele que ira herda esse estilo
 - Podemos definir o estilo para todos componentes atraves do atributo *theme* no arquivo index.js
+ 
+## `createTheme`
+  ele perminte criar um tema global para todos os arquivos
   - palette: define a paleta de cores
 A baixo exemplo para aplica no mesmo projeto 
 ```js
@@ -14,7 +17,7 @@ import { Button } from '@material-ui/core';
 import { ThemeProvider, createTheme } from '@material-ui/core';
 
 function App() {
-  const tema = createTheme({
+  const tema = createTheme({ // criando tema de cores
     palette: {
       primary:{ // define uma cor primaria 
         main: '#f44336',
@@ -26,7 +29,7 @@ function App() {
   });
 
   return (
-    <ThemeProvider theme={tema}>
+    <ThemeProvider theme={tema}>  
       {/**variant = ele é o tipo de botão  */}
       <Button variant='contained' color='secondary'> Olá Mundo</Button>
     </ThemeProvider>
@@ -35,7 +38,7 @@ function App() {
 export default App;
 
 ```
-## `ThemeProvider` 
+##  `createTheme`
 Podemos trabalha em arquivos separados como exemplo mostra abaixo
 
 ```jsx
@@ -166,4 +169,62 @@ root.render(
   </React.StrictMode>
 );
 
+```
+## Misturando  `createTheme`  e `makeStyles`
+exemplo em roda em arquivos separados
+- arquivo App.js
+```js
+import * as React from 'react';
+import { makeStyles } from '@material-ui/core';
+import { ThemeProvider,createTheme } from '@material-ui/core';
+import Home from './Home';
+
+const estilo = makeStyles({
+  root: {
+    // background: '#6a1b9a',
+    // height: '100vh'
+  }
+});
+
+
+function App() {
+  const tema = createTheme({
+    palette: {
+      primary:{ // define uma cor primaria 
+        main: '#f44336',
+      },
+      secondary:{ // defina uma cor secundaria
+        main: '#00796b',
+      }
+    },
+  });
+
+  const tela = estilo();
+  return (
+    <ThemeProvider theme={tema}>
+      <Home/>
+    </ThemeProvider>
+  );
+}
+export default App;
+```
+- arquivo Home
+```js
+import * as React from 'react';
+import { makeStyles } from '@material-ui/core';
+
+const estilo = makeStyles((tema) => ({
+    root: {
+      background:tema.palette.secondary.main,
+      height: '100vh'
+    }
+  }));
+
+function Home() {
+    const tela = estilo();
+    return (
+        <div className={tela.root}></div>
+    );
+}
+export default Home;
 ```
