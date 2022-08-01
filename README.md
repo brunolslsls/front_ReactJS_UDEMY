@@ -1,4 +1,14 @@
 # material-ui/core
+# Intalação nessecaria:
+- Instalar a biblioteca material-ui
+```bash
+ npm install @material-ui/core --force
+```
+- Instalar a biblioteca material-ui
+```bash
+npm install @material-ui/icons --force
+```
+
 
 ## `ThemeProvider`
 é utlizado para criar temas artisticas para nossos componenetes 
